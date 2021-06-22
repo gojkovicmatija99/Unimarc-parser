@@ -1,6 +1,10 @@
+<unimarc> :=        <field>*   
 <field> :=          <field_num> <indicators> <subfields> <eol>
 <field_num> :=      <number> <number> <number>
 <indicators> :=     (<number> | '#') (<number> | '#')
-<subfields> :=      <label> <content> (' ' <label> <content>)?
-<label> :=          '[' <letter> ']'
+<subfields> :=      <label1> (<pri_subfield> | <sec_subfield>) (' ' <label1> (<pri_subfield> | <sec_subfield>))?
+<pri_subfield> :=   <content>
+<sec_subfield> :=   '  ' '{{' (<field_num> <indicators> <content>)* '}}'
+<label1> :=          '[' <letter> ']'
+<label2> :=          <letter>
 <content> :=        <character> <character>*
