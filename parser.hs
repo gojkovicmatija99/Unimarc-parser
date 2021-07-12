@@ -93,7 +93,7 @@ libraryHelper (x:xs)
         | otherwise = toJsonUnimarc x ++ libraryHelper xs
 
 toJsonUnimarc:: Unimarc -> String
-toJsonUnimarc unimarc = "unimarc: [" ++ unimarcHelper unimarc ++ "]"
+toJsonUnimarc unimarc = "{unimarc: [" ++ unimarcHelper unimarc ++ "]}"
 
 unimarcHelper:: Unimarc -> String
 unimarcHelper (Unimarc []) = ""
