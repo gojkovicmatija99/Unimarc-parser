@@ -1,0 +1,908 @@
+{
+    "library": [
+        {
+            "unimarc": [
+                {
+                    "fieldNum": "001",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "c  "
+                        },
+                        {
+                            "label": "b",
+                            "content": "a  "
+                        },
+                        {
+                            "label": "c",
+                            "content": "m  "
+                        },
+                        {
+                            "label": "d",
+                            "content": "0  "
+                        },
+                        {
+                            "label": "7",
+                            "content": "cb  "
+                        },
+                        {
+                            "label": "e",
+                            "content": "209093 "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "010",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "978-86-505-2629-3  "
+                        },
+                        {
+                            "label": "b",
+                            "content": "картон "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "100",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "c",
+                            "content": "2015  "
+                        },
+                        {
+                            "label": "h",
+                            "content": "srp "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "101",
+                    "indicators": "0#",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "srp "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "102",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "srb "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "200",
+                    "indicators": "0#",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "Проклета авлија  "
+                        },
+                        {
+                            "label": "f",
+                            "content": "Иво Андрић "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "205",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "1. изд. у оквиру библиотеке "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "210",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "Београд  "
+                        },
+                        {
+                            "label": "c",
+                            "content": "Evro-Giunti  "
+                        },
+                        {
+                            "label": "d",
+                            "content": "2015 "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "215",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "103 стр.  "
+                        },
+                        {
+                            "label": "d",
+                            "content": "21 cm "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "225",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "Магично перо "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "225",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "Податак о години издавања преузет из CIP-a "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "300",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "Речник турцизама, провинцијализама и неких мање познатих израза: стр. 91-94 "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "300",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "Стр. 95-102: Иво Андрић / Јован Деретић "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "474",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "1",
+                            "content": "0 "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "675",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "821.163.41-31  "
+                        },
+                        {
+                            "label": "b",
+                            "content": "821.163.41-31 "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "675",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "821.163.41.09 Андрић И. "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "700",
+                    "indicators": "#1",
+                    "subFields": [
+                        {
+                            "label": "4",
+                            "content": "070  "
+                        },
+                        {
+                            "label": "a",
+                            "content": "ANDRIĆ  "
+                        },
+                        {
+                            "label": "b",
+                            "content": "Ivo "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "902",
+                    "indicators": "#1",
+                    "subFields": [
+                        {
+                            "label": "4",
+                            "content": "080  "
+                        },
+                        {
+                            "label": "a",
+                            "content": "DERETIĆ  "
+                        },
+                        {
+                            "label": "b",
+                            "content": "Jovan "
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "unimarc": [
+                {
+                    "fieldNum": "001",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "c  "
+                        },
+                        {
+                            "label": "b",
+                            "content": "a  "
+                        },
+                        {
+                            "label": "c",
+                            "content": "m  "
+                        },
+                        {
+                            "label": "d",
+                            "content": "0  "
+                        },
+                        {
+                            "label": "7",
+                            "content": "cb  "
+                        },
+                        {
+                            "label": "e",
+                            "content": "209106 "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "010",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "978-86-505-2650-7  "
+                        },
+                        {
+                            "label": "b",
+                            "content": "картон "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "100",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "c",
+                            "content": "2015  "
+                        },
+                        {
+                            "label": "h",
+                            "content": "srp "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "101",
+                    "indicators": "0#",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "srp "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "102",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "srb "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "200",
+                    "indicators": "0#",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "На Дрини ћуприја  "
+                        },
+                        {
+                            "label": "f",
+                            "content": "Иво Андрић "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "205",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "1. изд. у оквиру библиотеке "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "210",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "Београд  "
+                        },
+                        {
+                            "label": "c",
+                            "content": "Evro-Giunti  "
+                        },
+                        {
+                            "label": "d",
+                            "content": "2015 "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "215",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "379 стр.  "
+                        },
+                        {
+                            "label": "d",
+                            "content": "21 cm "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "225",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "Магично перо "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "300",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "Податак о години издавања преузет из CIP-а "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "300",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "Речник турцизама, провинцијализама и неких мање познатих израза: стр. 363-370 "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "300",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "Стр. 371-378: Иво Андрић / Јован Деретић "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "474",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "1",
+                            "content": "0 "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "675",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "821.163.41-31  "
+                        },
+                        {
+                            "label": "b",
+                            "content": "821.163.41-31 "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "675",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "821.163.41-31.09 Андрић И. "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "700",
+                    "indicators": "#1",
+                    "subFields": [
+                        {
+                            "label": "4",
+                            "content": "070  "
+                        },
+                        {
+                            "label": "a",
+                            "content": "Andrić  "
+                        },
+                        {
+                            "label": "b",
+                            "content": "Ivo "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "702",
+                    "indicators": "11",
+                    "subFields": [
+                        {
+                            "label": "4",
+                            "content": "080  "
+                        },
+                        {
+                            "label": "a",
+                            "content": "Deretić  "
+                        },
+                        {
+                            "label": "b",
+                            "content": "Jovan"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "unimarc": [
+                {
+                    "fieldNum": "001",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "c  "
+                        },
+                        {
+                            "label": "b",
+                            "content": "a  "
+                        },
+                        {
+                            "label": "c",
+                            "content": "m  "
+                        },
+                        {
+                            "label": "d",
+                            "content": "0  "
+                        },
+                        {
+                            "label": "7",
+                            "content": "ba  "
+                        },
+                        {
+                            "label": "e",
+                            "content": "203583 "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "010",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "978-86-521-0863-3  "
+                        },
+                        {
+                            "label": "b",
+                            "content": "broš. "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "100",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "c",
+                            "content": "2014  "
+                        },
+                        {
+                            "label": "h",
+                            "content": "srp "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "101",
+                    "indicators": "0#",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "srp "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "102",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "srb "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "205",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "3. izd. "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "210",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "Beograd  "
+                        },
+                        {
+                            "label": "c",
+                            "content": "Laguna  "
+                        },
+                        {
+                            "label": "d",
+                            "content": "2014 "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "215",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "407 str.  "
+                        },
+                        {
+                            "label": "d",
+                            "content": "20 cm "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "225",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "Dela Borislava Pekića u 13 knjiga  "
+                        },
+                        {
+                            "label": "v",
+                            "content": "knj. 1 "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "300",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "O autoru: str. 403-407 "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "675",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "821.163.41-31  "
+                        },
+                        {
+                            "label": "b",
+                            "content": "821.163.41-31 "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "675",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "929:821.163.41 Pekić, B. "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "700",
+                    "indicators": "#1",
+                    "subFields": [
+                        {
+                            "label": "4",
+                            "content": "070  "
+                        },
+                        {
+                            "label": "a",
+                            "content": "Pekić  "
+                        },
+                        {
+                            "label": "b",
+                            "content": "Borislav "
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "unimarc": [
+                {
+                    "fieldNum": "001",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "7",
+                            "content": "ca  "
+                        },
+                        {
+                            "label": "a",
+                            "content": "c  "
+                        },
+                        {
+                            "label": "b",
+                            "content": "a  "
+                        },
+                        {
+                            "label": "c",
+                            "content": "m  "
+                        },
+                        {
+                            "label": "d",
+                            "content": "0  "
+                        },
+                        {
+                            "label": "e",
+                            "content": "34692 "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "010",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "b",
+                            "content": "broš. "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "100",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "c",
+                            "content": "1995  "
+                        },
+                        {
+                            "label": "h",
+                            "content": "scr "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "101",
+                    "indicators": "0#",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "srp "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "102",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "yug "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "105",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "y "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "200",
+                    "indicators": "0#",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "Atlantida  "
+                        },
+                        {
+                            "label": "e",
+                            "content": "epos  "
+                        },
+                        {
+                            "label": "f",
+                            "content": "Borislav V. Pekić  "
+                        },
+                        {
+                            "label": "h",
+                            "content": "Knj. 2 "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "210",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "Novi Sad  "
+                        },
+                        {
+                            "label": "c",
+                            "content": "Solaris  "
+                        },
+                        {
+                            "label": "d",
+                            "content": "1995 "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "215",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "297 str.  "
+                        },
+                        {
+                            "label": "d",
+                            "content": "20 cm "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "225",
+                    "indicators": "2#",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "Biblioteka srpske fantastike  "
+                        },
+                        {
+                            "label": "v",
+                            "content": "knj. 4 "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "300",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "Ćir "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "300",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "Str. 291-296: Bliski, budući stari vek / Svetislav Jovanov "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "474",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "1",
+                            "content": "0 "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "675",
+                    "indicators": "##",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "821.163.41-31  "
+                        },
+                        {
+                            "label": "b",
+                            "content": "821.163.41-31 "
+                        }
+                    ]
+                },
+                {
+                    "fieldNum": "700",
+                    "indicators": "#1",
+                    "subFields": [
+                        {
+                            "label": "4",
+                            "content": "070  "
+                        },
+                        {
+                            "label": "a",
+                            "content": "PEKIĆ  "
+                        },
+                        {
+                            "label": "b",
+                            "content": "Borislav "
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
