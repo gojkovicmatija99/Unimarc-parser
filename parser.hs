@@ -1,13 +1,36 @@
-{-# OPTIONS_GHC -Wno-incomplete-patterns #-}
 import Text.Parsec
 import System.Environment
 import Text.Show.Unicode
 
-newtype Unimarc = Unimarc [Field] deriving Show
-data Field = Field FieldNum Indicators SubFields deriving Show
-newtype FieldNum = FieldNum String deriving Show
-newtype Indicators = Indicators String deriving Show
-data SubFields = Simple [(String, String)] | Recurent [(Char, Field)] deriving Show
+newtype Unimarc = Unimarc [Field]
+data Field = Field FieldNum Indicators SubFields
+newtype FieldNum = FieldNum String
+newtype Indicators = Indicators String
+data SubFields = Simple [(String, String)] | Recurent [(String, Field)]
+
+showLibrary:: [Unimarc] -> String
+showLibrary [] = ""
+showLibrary (x:xs) = show x ++ "\n" ++ showLibrary xs
+
+instance Show Unimarc where
+      show (Unimarc []) = ""
+      show (Unimarc (x:xs)) = show x ++ "\n" ++ show (Unimarc xs)
+
+instance Show Field where
+      show (Field fieldNum indicators subFields) = show fieldNum ++ " " ++ show indicators ++ " " ++ show subFields
+
+instance Show FieldNum where
+      show (FieldNum fieldNum) = fieldNum 
+
+instance Show Indicators where
+      show (Indicators indicators) = indicators
+
+instance Show SubFields where
+      show (Simple []) = ""
+      show (Simple (x:xs)) = showSubField x ++ show (Simple xs)
+
+showSubField:: (String, String) -> String
+showSubField (label, content) = "[" ++ label ++ "]" ++ content
 
 instance Eq FieldNum where
         FieldNum a == FieldNum b = a == b
@@ -49,8 +72,15 @@ subfieldsParse = sepEndBy labelContentParse $ char '['
 labelContentParse :: Parsec String () (String, String)
 labelContentParse = do
                     label <- labelParse
-                    content <- choice [many1 (noneOf "[\n"), many1 (noneOf "\n")]
+                    content <- many1 (noneOf "[\n") <|> bracketException
                     return (label, content)
+
+bracketException :: Parsec String () String
+bracketException =      do
+                        char '['
+                        content <- many1 (noneOf "[\n")
+                        return $ "[" ++ content
+
 
 labelParse :: Parsec String () String
 labelParse =    do
@@ -60,30 +90,49 @@ labelParse =    do
 
 ------------------------------------------------------------------------------------------
 
--- type ListZipper a = ([a], [a])
-
--- goForward :: ListZipper a -> ListZipper a
--- goForward (x:xs, bs) = (xs, x:bs)
-
--- goBack :: ListZipper a -> ListZipper a
--- goBack (xs, b:bs) = (b:xs, bs)
+appendToLibrary:: [Unimarc] -> String -> (String, String) -> Int -> [Unimarc]
+appendToLibrary (x:xs) searchFieldNum (addLabel, addContent) 0 = Unimarc (appendToUnimarc x searchFieldNum (addLabel, addContent)) : xs
+appendToLibrary (x:xs) searchFieldNum (addLabel, addContent) unimarcIdx = x : appendToLibrary xs searchFieldNum (addLabel, addContent) (unimarcIdx - 1)
 
 appendToUnimarc:: Unimarc -> String -> (String, String) -> [Field]
-appendToUnimarc (Unimarc []) searchFieldNum (addLabel, addContent) = []
-appendToUnimarc (Unimarc (x:xs)) searchFieldNum (addLabel, addContent) = [appendToField x searchFieldNum (addLabel, addContent)] ++ appendToUnimarc (Unimarc xs) searchFieldNum (addLabel, addContent)
+appendToUnimarc (Unimarc []) _ _ = []
+appendToUnimarc (Unimarc (x:xs)) searchFieldNum (addLabel, addContent) = appendToField x searchFieldNum (addLabel, addContent) : appendToUnimarc (Unimarc xs) searchFieldNum (addLabel, addContent)
 
 appendToField:: Field -> String -> (String, String) -> Field
-appendToField (Field (FieldNum fieldNum) indicators subFields) searchFieldNum (addLabel, addContent) =     if searchFieldNum == fieldNum
-                                                                                                            then (Field (FieldNum fieldNum) indicators $ appendToSubFields subFields (addLabel, addContent))
-                                                                                                            else (Field (FieldNum fieldNum) indicators subFields)
+appendToField (Field (FieldNum fieldNum) indicators subFields) searchFieldNum (addLabel, addContent) =     
+      if searchFieldNum == fieldNum
+      then Field (FieldNum fieldNum) indicators $ appendToSubFields subFields (addLabel, addContent)
+      else Field (FieldNum fieldNum) indicators subFields
 
 appendToSubFields:: SubFields -> (String, String) -> SubFields
 appendToSubFields (Simple xs) x = Simple (xs ++ [x])
 
+removeFromLibrary:: [Unimarc] -> String -> String -> Int -> [Unimarc]
+removeFromLibrary (x:xs) searchFieldNum removeLabel 0 = Unimarc (removeFromUnimarc x searchFieldNum removeLabel) : xs
+removeFromLibrary (x:xs) searchFieldNum removeLabel unimarcIdx = x : removeFromLibrary xs searchFieldNum removeLabel (unimarcIdx - 1)
+
+removeFromUnimarc:: Unimarc -> String -> String -> [Field]
+removeFromUnimarc (Unimarc []) _ _ = []
+removeFromUnimarc (Unimarc (x:xs)) searchFieldNum removeLabel = 
+      removeFromField x searchFieldNum removeLabel : removeFromUnimarc (Unimarc xs) searchFieldNum removeLabel
+
+removeFromField:: Field -> String -> String -> Field
+removeFromField (Field (FieldNum fieldNum) indicators subFields) searchFieldNum removeLabel =     
+      if searchFieldNum == fieldNum
+      then Field (FieldNum fieldNum) indicators $ Simple (removeFromSubFields subFields removeLabel)
+      else Field (FieldNum fieldNum) indicators subFields
+
+removeFromSubFields:: SubFields -> String -> [(String, String)]
+removeFromSubFields (Simple []) _ = []
+removeFromSubFields (Simple (x:xs)) removeLabel = if removeHelper x removeLabel then xs else x : removeFromSubFields (Simple xs) removeLabel
+
+removeHelper:: (String, String) -> String -> Bool
+removeHelper (label, content) removeLabel = label == removeLabel
+
 ----------------------------------------------------------------------------------------
 
 searchLibrary:: [Unimarc] -> String -> String -> String
-searchLibrary [] fieldNum label = "Not Found"
+searchLibrary [] _ _ = "Not Found"
 searchLibrary (x:xs) fieldNum label =     if searchUnimarc x fieldNum label == ""
                                           then searchLibrary xs fieldNum label
                                           else searchUnimarc x fieldNum label
@@ -166,29 +215,38 @@ main = do [input, op] <- getArgs
 
 operationPicker:: [Unimarc] -> String -> IO ()
 operationPicker library op = case op of
-                                    "json" -> putStr $ toJsonLibrary library
-                                    "search" -> do
-                                                putStr "FieldNum: "
-                                                fieldNum <- getLine
-                                                putStr "Label: "
-                                                label <- getLine
-                                                putStr "Unimarc index: "
-                                                unimarcIdx <- getLine
-                                                putStr $ searchUnimarc (library !! read unimarcIdx) fieldNum label
+                              "json" -> putStr $ toJsonLibrary library
+                              "search" -> do
+                                          putStr "FieldNum: "
+                                          fieldNum <- getLine
+                                          putStr "Label: "
+                                          label <- getLine
+                                          putStr "Unimarc index: "
+                                          unimarcIdx <- getLine
+                                          putStr $ searchUnimarc (library !! read unimarcIdx) fieldNum label
 
-                                    "save" ->   do
-                                                putStr "File name: "
-                                                output <- getLine
-                                                writeFile output $ show library
+                              "save" ->   do
+                                          putStr "File name: "
+                                          output <- getLine
+                                          writeFile output $ show library
 
-                                    "append" -> do
-                                                putStr "FieldNum: "
-                                                fieldNum <- getLine
-                                                putStr "Label: "
-                                                label <- getLine
-                                                putStr "Content: "
-                                                content <- getLine
-                                                putStr "Unimarc index: "
-                                                unimarcIdx <- getLine
-                                                writeFile "append.txt" $ show $ appendToUnimarc (library !! read unimarcIdx) fieldNum (label, content)
-                                    otherwise -> putStr "error"
+                              "append" -> do
+                                          putStr "FieldNum: "
+                                          fieldNum <- getLine
+                                          putStr "Label: "
+                                          label <- getLine
+                                          putStr "Content: "
+                                          content <- getLine
+                                          putStr "Unimarc index: "
+                                          unimarcIdx <- getLine
+                                          writeFile "zapisi.txt" $ showLibrary $ appendToLibrary library fieldNum (label, content) (read unimarcIdx)
+
+                              "remove" -> do
+                                           putStr "FieldNum: "
+                                           fieldNum <- getLine
+                                           putStr "Label: "
+                                           label <- getLine
+                                           putStr "Unimarc index: "
+                                           unimarcIdx <- getLine
+                                           writeFile "zapisi.txt" $ showLibrary $ removeFromLibrary library fieldNum label (read unimarcIdx)
+                              otherwise -> putStr "error"

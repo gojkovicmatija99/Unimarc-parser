@@ -229,7 +229,7 @@
                     ]
                 },
                 {
-                    "fieldNum": "902",
+                    "fieldNum": "702",
                     "indicators": "#1",
                     "subFields": [
                         {
@@ -577,6 +577,20 @@
                     ]
                 },
                 {
+                    "fieldNum": "200",
+                    "indicators": "0#",
+                    "subFields": [
+                        {
+                            "label": "a",
+                            "content": "Vreme čuda  "
+                        },
+                        {
+                            "label": "f",
+                            "content": "[Borislav] Pekić "
+                        }
+                    ]
+                },
+                {
                     "fieldNum": "205",
                     "indicators": "##",
                     "subFields": [
@@ -903,6 +917,9 @@
                     ]
                 }
             ]
+        },
+        {
+            "unimarc": []
         }
     ]
 }
