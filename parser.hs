@@ -1,3 +1,5 @@
+{-# OPTIONS_GHC -Wno-overlapping-patterns #-}
+{-# OPTIONS_GHC -Wno-incomplete-patterns #-}
 import Text.Parsec
 import System.Environment
 import Text.Show.Unicode
@@ -7,7 +9,7 @@ data Field = Field FieldNum Indicators SubFields
 newtype FieldNum = FieldNum String
 newtype Indicators = Indicators String
 data SubFields = Simple [(String, String)] | Recurent [(String, Field)]
-
+      
 showLibrary:: [Unimarc] -> String
 showLibrary [] = ""
 showLibrary (x:xs) = show x ++ "\n" ++ showLibrary xs
@@ -107,6 +109,8 @@ appendToField (Field (FieldNum fieldNum) indicators subFields) searchFieldNum (a
 appendToSubFields:: SubFields -> (String, String) -> SubFields
 appendToSubFields (Simple xs) x = Simple (xs ++ [x])
 
+----------------------------------
+
 removeFromLibrary:: [Unimarc] -> String -> String -> Int -> [Unimarc]
 removeFromLibrary (x:xs) searchFieldNum removeLabel 0 = Unimarc (removeFromUnimarc x searchFieldNum removeLabel) : xs
 removeFromLibrary (x:xs) searchFieldNum removeLabel unimarcIdx = x : removeFromLibrary xs searchFieldNum removeLabel (unimarcIdx - 1)
@@ -128,6 +132,29 @@ removeFromSubFields (Simple (x:xs)) removeLabel = if removeHelper x removeLabel 
 
 removeHelper:: (String, String) -> String -> Bool
 removeHelper (label, content) removeLabel = label == removeLabel
+
+----------------------------------
+
+editLibrary:: [Unimarc] -> String -> (String, String) -> Int -> [Unimarc]
+editLibrary (x:xs) searchFieldNum (addLabel, addContent) 0 = Unimarc (editUnimarc x searchFieldNum (addLabel, addContent)) : xs
+editLibrary (x:xs) searchFieldNum (addLabel, addContent) unimarcIdx = x : editLibrary xs searchFieldNum (addLabel, addContent) (unimarcIdx - 1)
+
+editUnimarc:: Unimarc -> String -> (String, String) -> [Field]
+editUnimarc (Unimarc []) _ _ = []
+editUnimarc (Unimarc (x:xs)) searchFieldNum (addLabel, addContent) = editField x searchFieldNum (addLabel, addContent) : editUnimarc (Unimarc xs) searchFieldNum (addLabel, addContent)
+
+editField:: Field -> String -> (String, String) -> Field
+editField (Field (FieldNum fieldNum) indicators subFields) searchFieldNum (addLabel, addContent) =     
+      if searchFieldNum == fieldNum
+      then Field (FieldNum fieldNum) indicators $ Simple (editSubFields subFields (addLabel, addContent))
+      else Field (FieldNum fieldNum) indicators subFields
+
+editSubFields:: SubFields -> (String, String) -> [(String, String)]
+editSubFields (Simple []) _ = []
+editSubFields (Simple (x:xs)) y = editHelper x y : editSubFields (Simple xs) y
+
+editHelper:: (String, String) -> (String, String) -> (String, String)
+editHelper (label, content) (searchLabel, newContent) = if searchLabel == label then (label, newContent) else (label, content)
 
 ----------------------------------------------------------------------------------------
 
@@ -249,4 +276,15 @@ operationPicker library op = case op of
                                            putStr "Unimarc index: "
                                            unimarcIdx <- getLine
                                            writeFile "zapisi.txt" $ showLibrary $ removeFromLibrary library fieldNum label (read unimarcIdx)
+                              
+                              "edit" -> do
+                                          putStr "FieldNum: "
+                                          fieldNum <- getLine
+                                          putStr "Label: "
+                                          label <- getLine
+                                          putStr "Content: "
+                                          content <- getLine
+                                          putStr "Unimarc index: "
+                                          unimarcIdx <- getLine
+                                          writeFile "zapisi.txt" $ showLibrary $ editLibrary library fieldNum (label, content) (read unimarcIdx)
                               otherwise -> putStr "error"
